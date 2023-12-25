@@ -5,8 +5,13 @@ import { SourceContext } from '@/context/SourceContext'
 
 export default function SearchSection() {
 
-    const { destination, setDestination } = useContext(DestinationContext)
+    const { destination, setDestination, routeData } = useContext(DestinationContext)
     const { source, setSource } = useContext(SourceContext)
+
+
+
+        console.log(routeData?.routes?.[0].legs?.[0].distance.text)
+    
     useEffect(() => {
         if (source) {
             console.log(source)
@@ -22,6 +27,12 @@ export default function SearchSection() {
             <p className='text-xl font-bold '>Get a Ride</p>
             <InputItem type='source' />
             <InputItem type='destination' />
+            <p>{
+                routeData && routeData?.routes?.[0].legs?.[0].distance.text 
+            }</p>
+            {
+                routeData?.routes?.[0].legs?.[0].duration.text
+            }
             <button type='button' className='p-3 bg-black w-full mt-5 text-white rounded-lg' >Search</button>
         </div>
     )

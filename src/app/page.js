@@ -11,7 +11,6 @@ export default function Home() {
     <DestinationContextProvder>
       <SourceContextProvider>
       <LoadScript googleMapsApiKey={process.env.NEXT_PUBLIC_GOOGLE_API_KEY} libraries={['places']} >
-
         <div className='p-6 grid grid-cols-1 md:grid-cols-3 gap-5'>
           <div className=''>
             <SearchSection />

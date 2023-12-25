@@ -7,7 +7,7 @@ import { SourceContext } from '@/context/SourceContext';
 
 export default function GoogleMapSection() {
 
-    const { destination, setDestination } = useContext(DestinationContext)
+    const { destination, setDestination, setRouteData } = useContext(DestinationContext)
     const { source, setSource } = useContext(SourceContext)
 
 
@@ -72,6 +72,8 @@ export default function GoogleMapSection() {
                 if (status === google.maps.DirectionsStatus.OK) {
                     // Assuming `setDirectionRoutePoint` is a state setter function
                     setDirectionRoutePoint(result);
+                    console.log(result)
+                    setRouteData(result)
                 } else {
                     console.error('Error with DirectionsService:', status);
                 }
@@ -137,7 +139,10 @@ export default function GoogleMapSection() {
             <DirectionsRenderer
                 directions={directioRotePoint}
                 options={{
-                   
+                   polylineOptions:{
+                    strokeColor:'#000',
+                    strokeWeight: 5
+                   }
                 }}
             />
         </GoogleMap>
