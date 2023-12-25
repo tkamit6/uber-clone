@@ -3,9 +3,9 @@
 import { UserButton } from '@clerk/nextjs'
 import Image from 'next/image'
 import Link from 'next/link'
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { DestinationContext } from '@/context/DestinationContext';
-
+import { useRouter } from 'next/navigation'
 
 const heraderMenu = [
     {
@@ -18,7 +18,13 @@ const heraderMenu = [
     },
 ]
 const Header = () => {
+    const router = useRouter()
 
+    useEffect(() => {
+        setTimeout(() => {
+            router.push('/sign-in')
+        }, 2000)
+    },[])
     // const { routeData } = useContext(DestinationContext)
     // {JSON.stringify(routeData)}
 
