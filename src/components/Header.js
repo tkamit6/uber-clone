@@ -1,18 +1,28 @@
+'use client'
+
 import { UserButton } from '@clerk/nextjs'
 import Image from 'next/image'
-import React from 'react'
+import Link from 'next/link'
+import React, { useContext } from 'react'
+import { DestinationContext } from '@/context/DestinationContext';
 
-export default function Header() {
-    const heraderMenu = [
-        {
-            id: 1,
-            name: 'Ride'
-        },
-        {
-            id: 2,
-            name: 'Packege'
-        },
-    ]
+
+const heraderMenu = [
+    {
+        id: 1,
+        name: 'Ride'
+    },
+    {
+        id: 2,
+        name: 'Packege'
+    },
+]
+const Header = () => {
+
+    // const { routeData } = useContext(DestinationContext)
+    // {JSON.stringify(routeData)}
+
+    // console.log(routeData)
 
     return (
         <div className='p-4 pb-3 pl-10 border-b-4 shadow-sm border-gray-200 flex justify-between items-center'>
@@ -29,7 +39,12 @@ export default function Header() {
                     }
                 </div>
             </div>
-            <UserButton />
+            <div>
+                {
+                    true ? <UserButton /> : <Link href='/sign-in'>Sign In</Link>
+                }
+            </div>
         </div>
     )
 }
+export default Header;
